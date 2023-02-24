@@ -1,0 +1,30 @@
+/*---------------- GENERAL ----------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", sans-serif;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*---------------- GAMEBOARD ----------------*/
+.mainboard {
+  display: grid;
+  border: 8px solid black;
+  height: 600px;
+  width: 600px;
+  grid-template-columns: repeat(3, minmax(50px, 1fr));
+}
+
+.mainboard > div {
+  border: 1px solid black;
+}
