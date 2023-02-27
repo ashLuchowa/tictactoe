@@ -9,6 +9,7 @@ const gameStart = (() => {
   const player1 = players("X", 0);
   const player2 = players("O", 0);
   let currentPlayer = player1;
+  let gameRound = 0;
   const gameOver = false;
 
   const box = document.querySelector(".mainboard");
@@ -45,5 +46,6 @@ const gameStart = (() => {
     player2,
     currentPlayer,
     gameOver,
+    gameRound,
   };
 })();
