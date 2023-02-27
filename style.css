@@ -9,19 +9,23 @@ body {
   font-family: "Courier New", sans-serif;
 }
 
+:root {
+  --mainboard-size: 400px;
+}
+
 .container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*---------------- GAMEBOARD ----------------*/
 .mainboard {
   display: grid;
   border: 8px solid black;
-  height: 600px;
-  width: 600px;
+  height: var(--mainboard-size);
+  width: var(--mainboard-size);
   grid-template-columns: repeat(3, minmax(50px, 1fr));
 }
 
