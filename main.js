@@ -9,18 +9,24 @@ const gameBoard = (() => {
 const gameStart = (() => {
   const player1 = "X";
   const player2 = "O";
+  let currentPlayer = player1;
 
   const box = document.querySelector(".mainboard");
   const singleBox = document.querySelectorAll(".mainboard div");
 
   singleBox.forEach((square) => {
     square.addEventListener("click", () => {
-      square.textContent = player1;
-      //
+      if (currentPlayer === player1) {
+        square.textContent = player1;
+        currentPlayer = player2;
+      } else if (currentPlayer === player2) {
+        square.textContent = player2;
+        currentPlayer = player1;
+      }
     });
   });
 
-  return { box, singleBox, player1, player2 };
+  return { box, singleBox, player1, player2, currentPlayer };
 })();
 
-console.log(gameStart.player1);
+console.log(gameStart.currentPlayer);
