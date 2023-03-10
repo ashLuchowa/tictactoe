@@ -6,9 +6,9 @@ const players = (playerName, playerScore) => {
 //GameStart Module
 const gameStart = (() => {
   let gameBoardContent = [
-    ["1", "2", "3"],
-    ["4", "5", "6"],
-    ["7", "8", "9"],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
   ];
   const player1 = players("X", 0);
   const player2 = players("O", 0);
