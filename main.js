@@ -21,6 +21,11 @@ const gameStart = (() => {
   const square2 = document.getElementById("square2");
   const square3 = document.getElementById("square3");
   const square4 = document.getElementById("square4");
+  const square5 = document.getElementById("square5");
+  const square6 = document.getElementById("square6");
+  const square7 = document.getElementById("square7");
+  const square8 = document.getElementById("square8");
+  const square9 = document.getElementById("square9");
 
   //what happens for each square Function
   const handleSquareClick = (squareElement, row, col) => {
@@ -44,6 +49,21 @@ const gameStart = (() => {
   })
   square4.addEventListener('click', () => {
     handleSquareClick(square4, 1, 0);
+  })
+  square5.addEventListener('click', () => {
+    handleSquareClick(square5, 1, 1);
+  })
+  square6.addEventListener('click', () => {
+    handleSquareClick(square6, 1, 2);
+  })
+  square7.addEventListener('click', () => {
+    handleSquareClick(square7, 2, 0);
+  })
+  square8.addEventListener('click', () => {
+    handleSquareClick(square8, 2, 1);
+  })
+  square9.addEventListener('click', () => {
+    handleSquareClick(square9, 2, 2);
   })
 
   return {
