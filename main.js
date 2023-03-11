@@ -46,8 +46,15 @@ const gameStart = (() => {
     setSquareClick("square8", 2, 1);
     setSquareClick("square9", 2, 2);
   };
-
   setSquareClickEvents();
+
+  //Score UI
+  const player1Score = document.querySelector('#player1-score');
+  const player2Score = document.querySelector('#player2-score');
+  const currentRound = document.querySelector('#current-round');
+  player1Score.textContent = `Player 1: ${player1.playerScore}`;
+  player2Score.textContent = `Player 2: ${player2.playerScore}`;
+  currentRound.textContent = `Round ${gameRound}`;
 
   return {
     gameBoardContent,
