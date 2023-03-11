@@ -16,6 +16,7 @@ body {
 .container {
   height: 95vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -34,6 +35,11 @@ header h2 {
 }
 
 /*---------------- GAMEBOARD ----------------*/
+.game-logo {
+  margin-bottom: 50px;
+  font-size: 5vw;
+}
+
 .mainboard {
   display: grid;
   border: 8px solid black;
