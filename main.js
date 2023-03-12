@@ -49,12 +49,16 @@ const gameStart = (() => {
   };
   setSquareClickEvents();
 
-  //Score UI
+  //UI
   let player1Score = document.querySelector('#player1-score');
   let player2Score = document.querySelector('#player2-score');
   const currentRound = document.querySelector('#current-round');
-  player1Score.textContent = `Player 1: ${player1.playerScore}`;
-  player2Score.textContent = `Player 2: ${player2.playerScore}`;
+
+  const updateScore = () => {
+    player1Score.textContent = `Player 1: ${player1.playerScore}`;
+    player2Score.textContent = `Player 2: ${player2.playerScore}`;
+  }
+
   currentRound.textContent = `Round ${gameRound}`;
 
   //Winning Logic
@@ -73,12 +77,11 @@ const gameStart = (() => {
     if(playerID === 'X') {
       alert('Player 1 Wins!');
       player1.playerScore++;
-      player1Score.textContent = `Player 1: ${player1.playerScore}`;
     } else {
       alert('Player 2 Wins!');
       player2.playerScore++;
-      player2Score.textContent = `Player 2: ${player2.playerScore}`;
     }
+    updateScore();
   }
 
   return {
@@ -91,6 +94,7 @@ const gameStart = (() => {
     handleSquareClick,
     setSquareClick,
     setSquareClickEvents,
+    updateScore,
   };
   
 })();
