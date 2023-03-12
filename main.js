@@ -13,7 +13,7 @@ const gameStart = (() => {
   const player1 = players("X", 0);
   const player2 = players("O", 0);
   let currentPlayer = player1;
-  let gameRound = 0;
+  let gameRound = 1;
   const gameOver = false;
 
   //click square event
@@ -52,14 +52,18 @@ const gameStart = (() => {
   //UI
   let player1Score = document.querySelector('#player1-score');
   let player2Score = document.querySelector('#player2-score');
-  const currentRound = document.querySelector('#current-round');
 
   const updateScore = () => {
     player1Score.textContent = `Player 1: ${player1.playerScore}`;
     player2Score.textContent = `Player 2: ${player2.playerScore}`;
   }
 
+  const currentRound = document.querySelector('#current-round');
   currentRound.textContent = `Round ${gameRound}`;
+  const updateRound = () => {
+    gameRound++;
+    currentRound.textContent = `Round ${gameRound}`;
+  }
 
   //Winning Logic
   const winCondition = (playerID) => {
@@ -77,11 +81,13 @@ const gameStart = (() => {
     if(playerID === 'X') {
       alert('Player 1 Wins!');
       player1.playerScore++;
+      
     } else {
       alert('Player 2 Wins!');
       player2.playerScore++;
     }
     updateScore();
+    updateRound();
   }
 
   return {
