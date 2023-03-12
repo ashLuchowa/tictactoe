@@ -30,6 +30,7 @@ const gameStart = (() => {
       gameBoardContent[row][col] = currentPlayer.playerName;
       squareElement.textContent = currentPlayer.playerName;
       currentPlayer === player1 ? currentPlayer = player2 : currentPlayer = player1;
+      winCondition(squareElement.textContent);
       console.log(gameBoardContent);
     }
   };
@@ -56,6 +57,18 @@ const gameStart = (() => {
   player2Score.textContent = `Player 2: ${player2.playerScore}`;
   currentRound.textContent = `Round ${gameRound}`;
 
+  //Winning Logic
+  const winCondition = (playerID) => {
+    ((gameBoardContent[0][0] === playerID && gameBoardContent[0][1] === playerID && gameBoardContent[0][2] === playerID)
+    || (gameBoardContent[1][0] === playerID && gameBoardContent[1][1] === playerID && gameBoardContent[1][2] === playerID)
+    || (gameBoardContent[2][0] === playerID && gameBoardContent[2][1] === playerID && gameBoardContent[2][2] === playerID)
+    || (gameBoardContent[0][0] === playerID && gameBoardContent[1][0] === playerID && gameBoardContent[2][0] === playerID)
+    || (gameBoardContent[0][1] === playerID && gameBoardContent[1][1] === playerID && gameBoardContent[2][1] === playerID)
+    || (gameBoardContent[0][2] === playerID && gameBoardContent[1][2] === playerID && gameBoardContent[2][2] === playerID)
+    || (gameBoardContent[0][0] === playerID && gameBoardContent[1][1] === playerID && gameBoardContent[2][2] === playerID)
+    || (gameBoardContent[2][0] === playerID && gameBoardContent[1][1] === playerID && gameBoardContent[0][2] === playerID)) ? alert('Yes') : console.log('No');
+  }
+
   return {
     gameBoardContent,
     player1,
@@ -67,4 +80,5 @@ const gameStart = (() => {
     setSquareClick,
     setSquareClickEvents,
   };
+  
 })();
