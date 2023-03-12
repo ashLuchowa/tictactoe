@@ -50,8 +50,8 @@ const gameStart = (() => {
   setSquareClickEvents();
 
   //Score UI
-  const player1Score = document.querySelector('#player1-score');
-  const player2Score = document.querySelector('#player2-score');
+  let player1Score = document.querySelector('#player1-score');
+  let player2Score = document.querySelector('#player2-score');
   const currentRound = document.querySelector('#current-round');
   player1Score.textContent = `Player 1: ${player1.playerScore}`;
   player2Score.textContent = `Player 2: ${player2.playerScore}`;
@@ -66,7 +66,19 @@ const gameStart = (() => {
     || (gameBoardContent[0][1] === playerID && gameBoardContent[1][1] === playerID && gameBoardContent[2][1] === playerID)
     || (gameBoardContent[0][2] === playerID && gameBoardContent[1][2] === playerID && gameBoardContent[2][2] === playerID)
     || (gameBoardContent[0][0] === playerID && gameBoardContent[1][1] === playerID && gameBoardContent[2][2] === playerID)
-    || (gameBoardContent[2][0] === playerID && gameBoardContent[1][1] === playerID && gameBoardContent[0][2] === playerID)) ? alert('Yes') : console.log('No');
+    || (gameBoardContent[2][0] === playerID && gameBoardContent[1][1] === playerID && gameBoardContent[0][2] === playerID)) ? playerWinResult(playerID) : console.log('No');
+  }
+
+  const playerWinResult = (playerID) => {
+    if(playerID === 'X') {
+      alert('Player 1 Wins!');
+      player1.playerScore++;
+      player1Score.textContent = `Player 1: ${player1.playerScore}`;
+    } else {
+      alert('Player 2 Wins!');
+      player2.playerScore++;
+      player2Score.textContent = `Player 2: ${player2.playerScore}`;
+    }
   }
 
   return {
