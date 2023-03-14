@@ -90,17 +90,7 @@ const gameStart = (() => {
     || (gameBoardContent[2][0] === playerID && gameBoardContent[1][1] === playerID && gameBoardContent[0][2] === playerID)) ? playerWinResult(playerID) : console.log('No');
   }
 
-  //Reset Board
-  const resetMainBoard = () => {
-    gameBoardContent = [
-      ["", "", ""],
-      ["", "", ""],
-      ["", "", ""],
-    ];
-    const squares = document.querySelectorAll('.square');
-    squares.forEach(square => square.textContent = '');
-  }
-
+  //Win Result
   const playerWinResult = (playerID) => {
     if(playerID === 'X') {
       gameLogo.textContent = 'Player X wins!';
@@ -113,6 +103,22 @@ const gameStart = (() => {
     updateScore();
     updateRound();
     resetMainBoard();
+  }
+
+  //Reset Board
+  const resetMainBoard = () => {
+    gameBoardContent = [
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+    ];
+    const squares = document.querySelectorAll('.square');
+    squares.forEach(square => square.textContent = '');
+  }
+
+  //Next Round btn
+  const nextRoundBtn = () => {
+    //press btn to go to next round
   }
 
   return {

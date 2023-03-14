@@ -6,28 +6,28 @@
 }
 
 body {
+  position: relative;
   height: 100vh;
-  padding: 40px 0px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   font-family: "Courier New", sans-serif;
 }
 
 :root {
   --mainboard-size: 130px;
-  --main-grid-size: 67vh;
-  --header-height: auto;
+  --main-grid-size: 65vh;
 }
 
 .container {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
 /*---------------- HEADER ----------------*/
 header {
-  height: var(--header-height);
+  width: 700px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -40,7 +40,6 @@ header h2 {
 /*---------------- GAMEBOARD ----------------*/
 .game-logo {
   font-size: 5vw;
-  height: calc(100vh - (var(--main-grid-size) + var(--header-height)));
 }
 
 .mainboard {
@@ -64,12 +63,35 @@ header h2 {
   height: var(--main-grid-size);
 }
 
-/*---------------- UI ----------------*/
+/*---------------- SCORE UI ----------------*/
 .updateScoreUI {
   background-color: black;
   color: white;
 }
 
-#player1-score, #player2-score {
+#player1-score,
+#player2-score {
   padding: 10px;
+}
+
+/*---------------- NEXT ROUND BUTTON ----------------*/
+.blur-background {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+}
+
+.next-round-btn {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 500px;
+  background-color: rgba(255, 255, 255, 0.96);
+  border: 5px solid black;
+  border-radius: 5px;
 }
