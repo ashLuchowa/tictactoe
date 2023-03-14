@@ -15,7 +15,6 @@ const gameStart = (() => {
   let currentPlayer = player1;
   let gameRound = 1;
   const gameOver = false;
-  const gameLogo = document.querySelector('.game-logo h1');
 
   //click square event
   const setSquareClick = (squareId, row, col) => {
@@ -27,21 +26,20 @@ const gameStart = (() => {
 
   //what happens for each square Function
   const handleSquareClick = (squareElement, row, col) => {
-    if (squareElement.textContent === '') {
+    if (squareElement.textContent === "") {
       gameBoardContent[row][col] = currentPlayer.playerName;
       squareElement.textContent = currentPlayer.playerName;
 
       //Change current player UI color
       if (currentPlayer === player1) {
         currentPlayer = player2;
-        player1Score.classList.remove('updateScoreUI');
-        player2Score.classList.add('updateScoreUI');
+        player1Score.classList.remove("updateScoreUI");
+        player2Score.classList.add("updateScoreUI");
       } else {
         currentPlayer = player1;
-        player1Score.classList.add('updateScoreUI');
-        player2Score.classList.remove('updateScoreUI');
+        player1Score.classList.add("updateScoreUI");
+        player2Score.classList.remove("updateScoreUI");
       }
-
       winCondition(squareElement.textContent);
       console.log(gameBoardContent);
     }
@@ -62,21 +60,21 @@ const gameStart = (() => {
   setSquareClickEvents();
 
   //UI
-  let player1Score = document.querySelector('#player1-score');
-  let player2Score = document.querySelector('#player2-score');
-  player1Score.classList.add('updateScoreUI');
+  let player1Score = document.querySelector("#player1-score");
+  let player2Score = document.querySelector("#player2-score");
+  player1Score.classList.add("updateScoreUI");
 
   const updateScore = () => {
     player1Score.textContent = `Player X: ${player1.playerScore}`;
     player2Score.textContent = `Player O: ${player2.playerScore}`;
-  }
+  };
 
-  const currentRound = document.querySelector('#current-round');
+  const currentRound = document.querySelector("#current-round");
   currentRound.textContent = `Round ${gameRound}`;
   const updateRound = () => {
     gameRound++;
     currentRound.textContent = `Round ${gameRound}`;
-  }
+  };
 
   //Winning Logic
   const winCondition = (playerID) => {
@@ -92,16 +90,18 @@ const gameStart = (() => {
 
   //Win Result
   const playerWinResult = (playerID) => {
-    if(playerID === 'X') {
+    if (playerID === "X") {
       player1.playerScore++;
-      
     } else {
       player2.playerScore++;
     }
     updateScore();
     updateRound();
     nextRoundBtn();
-  }
+
+    const playerWinText = document.querySelector(".next-round-btn h3");
+    playerWinText.textContent = `Player ${playerID} wins!`;
+  };
 
   //Reset Board
   const resetMainBoard = () => {
@@ -110,24 +110,28 @@ const gameStart = (() => {
       ["", "", ""],
       ["", "", ""],
     ];
-    const squares = document.querySelectorAll('.square');
-    squares.forEach(square => square.textContent = '');
-  }
+    const squares = document.querySelectorAll(".square");
+    squares.forEach((square) => (square.textContent = ""));
+  };
 
   //Next Round btn
   const nextRoundBtn = () => {
-    const blurBackground = document.querySelector('.blur-background');
-    const nextRoundModal = document.querySelector('.next-round-btn');
-    const nextBtn = document.querySelector('.next-round-btn button');
-    blurBackground.style.display = 'flex';
-    nextRoundModal.style.display = 'flex';
-    nextBtn.addEventListener('click', () => {
+    const blurBackground = document.querySelector(".blur-background");
+    const nextRoundModal = document.querySelector(".next-round-btn");
+    const nextBtn = document.querySelector(".next-round-btn button");
+
+    setTimeout(() => {
+      blurBackground.style.display = "flex";
+      blurBackground.style.filter = "blur(8px)";
+      nextRoundModal.style.display = "flex";
+    }, 400);
+
+    nextBtn.addEventListener("click", () => {
       resetMainBoard();
-      blurBackground.style.display = 'none';
-      nextRoundModal.style.display = 'none';
+      blurBackground.style.display = "none";
+      nextRoundModal.style.display = "none";
     });
-    
-  }
+  };
 
   return {
     gameBoardContent,
@@ -141,5 +145,4 @@ const gameStart = (() => {
     setSquareClickEvents,
     updateScore,
   };
-  
 })();
