@@ -15,6 +15,7 @@ const gameStart = (() => {
   let currentPlayer = player1;
   let gameRound = 1;
   const gameOver = false;
+  const gameLogo = document.querySelector('.game-logo h1');
 
   //click square event
   const setSquareClick = (squareId, row, col) => {
@@ -26,20 +27,20 @@ const gameStart = (() => {
 
   //what happens for each square Function
   const handleSquareClick = (squareElement, row, col) => {
-    if(squareElement.textContent === '') {
+    if (squareElement.textContent === '') {
       gameBoardContent[row][col] = currentPlayer.playerName;
       squareElement.textContent = currentPlayer.playerName;
 
-    //Change current player UI color
-    if(currentPlayer === player1) {
-      currentPlayer = player2;
-      player1Score.classList.remove('updateScoreUI');
-      player2Score.classList.add('updateScoreUI');
-    } else {
-      currentPlayer = player1;
-      player1Score.classList.add('updateScoreUI');
-      player2Score.classList.remove('updateScoreUI');
-  }
+      //Change current player UI color
+      if (currentPlayer === player1) {
+        currentPlayer = player2;
+        player1Score.classList.remove('updateScoreUI');
+        player2Score.classList.add('updateScoreUI');
+      } else {
+        currentPlayer = player1;
+        player1Score.classList.add('updateScoreUI');
+        player2Score.classList.remove('updateScoreUI');
+      }
 
       winCondition(squareElement.textContent);
       console.log(gameBoardContent);
@@ -89,6 +90,17 @@ const gameStart = (() => {
     || (gameBoardContent[2][0] === playerID && gameBoardContent[1][1] === playerID && gameBoardContent[0][2] === playerID)) ? playerWinResult(playerID) : console.log('No');
   }
 
+  //Reset Board
+  const resetMainBoard = () => {
+    gameBoardContent = [
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+    ];
+    const squares = document.querySelectorAll('.square');
+    squares.forEach(square => square.textContent = '');
+  }
+
   const playerWinResult = (playerID) => {
     if(playerID === 'X') {
       alert('Player X Wins!');
@@ -100,6 +112,7 @@ const gameStart = (() => {
     }
     updateScore();
     updateRound();
+    resetMainBoard();
   }
 
   return {
