@@ -93,16 +93,14 @@ const gameStart = (() => {
   //Win Result
   const playerWinResult = (playerID) => {
     if(playerID === 'X') {
-      gameLogo.textContent = 'Player X wins!';
       player1.playerScore++;
       
     } else {
-      gameLogo.textContent = 'Player O wins!';
       player2.playerScore++;
     }
     updateScore();
     updateRound();
-    resetMainBoard();
+    nextRoundBtn();
   }
 
   //Reset Board
@@ -118,7 +116,17 @@ const gameStart = (() => {
 
   //Next Round btn
   const nextRoundBtn = () => {
-    //press btn to go to next round
+    const blurBackground = document.querySelector('.blur-background');
+    const nextRoundModal = document.querySelector('.next-round-btn');
+    const nextBtn = document.querySelector('.next-round-btn button');
+    blurBackground.style.display = 'flex';
+    nextRoundModal.style.display = 'flex';
+    nextBtn.addEventListener('click', () => {
+      resetMainBoard();
+      blurBackground.style.display = 'none';
+      nextRoundModal.style.display = 'none';
+    });
+    
   }
 
   return {
