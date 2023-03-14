@@ -29,7 +29,18 @@ const gameStart = (() => {
     if(squareElement.textContent === '') {
       gameBoardContent[row][col] = currentPlayer.playerName;
       squareElement.textContent = currentPlayer.playerName;
-      currentPlayer === player1 ? currentPlayer = player2 : currentPlayer = player1;
+
+    //Change current player UI color
+    if(currentPlayer === player1) {
+      currentPlayer = player2;
+      player1Score.classList.remove('updateScoreUI');
+      player2Score.classList.add('updateScoreUI');
+    } else {
+      currentPlayer = player1;
+      player1Score.classList.add('updateScoreUI');
+      player2Score.classList.remove('updateScoreUI');
+  }
+
       winCondition(squareElement.textContent);
       console.log(gameBoardContent);
     }
@@ -52,10 +63,11 @@ const gameStart = (() => {
   //UI
   let player1Score = document.querySelector('#player1-score');
   let player2Score = document.querySelector('#player2-score');
+  player1Score.classList.add('updateScoreUI');
 
   const updateScore = () => {
-    player1Score.textContent = `Player 1: ${player1.playerScore}`;
-    player2Score.textContent = `Player 2: ${player2.playerScore}`;
+    player1Score.textContent = `Player X: ${player1.playerScore}`;
+    player2Score.textContent = `Player O: ${player2.playerScore}`;
   }
 
   const currentRound = document.querySelector('#current-round');
@@ -79,11 +91,11 @@ const gameStart = (() => {
 
   const playerWinResult = (playerID) => {
     if(playerID === 'X') {
-      alert('Player 1 Wins!');
+      alert('Player X Wins!');
       player1.playerScore++;
       
     } else {
-      alert('Player 2 Wins!');
+      alert('Player O Wins!');
       player2.playerScore++;
     }
     updateScore();
