@@ -14,7 +14,6 @@ const gameStart = (() => {
   const player2 = players("O", 0);
   let currentPlayer = player1;
   let gameRound = 1;
-  const gameOver = false;
 
   //click square event
   const setSquareClick = (squareId, row, col) => {
