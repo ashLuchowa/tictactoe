@@ -103,11 +103,11 @@ const gameStart = (() => {
 
   const playerWinResult = (playerID) => {
     if(playerID === 'X') {
-      alert('Player X Wins!');
+      gameLogo.textContent = 'Player X wins!';
       player1.playerScore++;
       
     } else {
-      alert('Player O Wins!');
+      gameLogo.textContent = 'Player O wins!';
       player2.playerScore++;
     }
     updateScore();
