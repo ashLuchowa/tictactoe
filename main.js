@@ -137,7 +137,6 @@ const gameStart = (() => {
     player1,
     player2,
     currentPlayer,
-    gameOver,
     gameRound,
     handleSquareClick,
     setSquareClick,
