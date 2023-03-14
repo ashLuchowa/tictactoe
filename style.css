@@ -6,28 +6,31 @@
 }
 
 body {
+  height: 100vh;
+  padding: 40px 0px;
+  display: flex;
+  flex-direction: column;
   font-family: "Courier New", sans-serif;
 }
 
 :root {
   --mainboard-size: 130px;
+  --main-grid-size: 67vh;
+  --header-height: auto;
 }
 
 .container {
-  height: 95vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 /*---------------- HEADER ----------------*/
 header {
-  height: 5vh;
+  height: var(--header-height);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  border: 3px solid black;
 }
 
 header h2 {
@@ -36,8 +39,8 @@ header h2 {
 
 /*---------------- GAMEBOARD ----------------*/
 .game-logo {
-  margin-bottom: 50px;
   font-size: 5vw;
+  height: calc(100vh - (var(--main-grid-size) + var(--header-height)));
 }
 
 .mainboard {
@@ -57,8 +60,16 @@ header h2 {
   width: var(--mainboard-size);
 }
 
+.mainboard-container {
+  height: var(--main-grid-size);
+}
+
 /*---------------- UI ----------------*/
 .updateScoreUI {
   background-color: black;
   color: white;
+}
+
+#player1-score, #player2-score {
+  padding: 10px;
 }
